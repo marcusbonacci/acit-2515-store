@@ -1,4 +1,4 @@
-name,price,available,category
+name,price,inventory,category
 apple,1.49,10,produce
 bananas,3.49,5,produce
 lemon,1.00,5,produce
