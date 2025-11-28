@@ -8,7 +8,7 @@ from sqlalchemy import select
 
 try:
     from database import Session, engine
-    from models import Base, Customer, Product
+    from models import Base, Customer, Product, Category
 except ImportError as e:
     print("IMPORT ERROR", e)
 
