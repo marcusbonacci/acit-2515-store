@@ -1,7 +1,7 @@
 from sqlalchemy import String, DECIMAL, Integer
 from sqlalchemy.orm import mapped_column
 
-from .baseModel import Base
+from . import Base
 
 class Product(Base):
     __tablename__ = "product"
