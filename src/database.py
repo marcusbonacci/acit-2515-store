@@ -1,6 +1,4 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from flask_sqlalchemy import SQLAlchemy
 from models import Base
 
-engine = create_engine("sqlite:///data.db", echo=True)
-Session = sessionmaker(bind=engine)
+db = SQLAlchemy(model_class=Base)
