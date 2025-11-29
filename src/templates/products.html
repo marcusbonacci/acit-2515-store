@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block pagetitle %}Products {% endblock %}
+
+{% block content %}
+<h2>Products</h2>
+
+<table>
+    <!-- Headers -->
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Inventory</th>
+        <th>Category</th>
+    </tr>
+    <!-- Data -->
+    {% for product in products %}
+
+    {% set cur_stock = "default" %}
+    {% if product.inventory == 0 %}
+    {% set cur_stock = "critical" %}
+    {% elif product.inventory <= 5 %}
+    {% set cur_stock = "danger" %}
+    {% elif product.inventory <= 15 %}
+        {% set cur_stock = "low" %}
+    {% endif %}
+
+    <tr>
+        <td>{{ product.name.title() }}</td>
+        <td>${{ product.price }}</td>
+        <td stock="{{ cur_stock }}">{{ product.inventory, cur_stock.title() }}</td>
+        <td>{{ product.category.name.title() }}</td>
+        <!-- <td>{{ cur_stock.title() }}</td> -->
+    </tr>
+    {% endfor %}
+</table>
+
+
+{% endblock %}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>{% block pagetitle %}Store {% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>
+            <a href="{{ url_for('home') }}">Grocery Store</a>
+        </h1>
+        <nav>
+            <a href="{{ url_for('products') }}" class="nav-link">Products</a>
+            <a href="{{ url_for('customers')}}" class="nav-link">Customers</a>
+            <a href="{{ url_for('categories')}}" class="nav-link">Categories</a>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>
