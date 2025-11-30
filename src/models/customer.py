@@ -1,14 +1,11 @@
-from sqlalchemy import String, DECIMAL, Integer
-from sqlalchemy.orm import mapped_column
+from database import db
 
-from . import Base
-
-class Customer(Base):
+class Customer(db.Model):
     __tablename__ = "customer"
 
-    id = mapped_column(Integer, primary_key=True)
-    name = mapped_column(String)
-    phone = mapped_column(String)
+    id = db.mapped_column(db.Integer, primary_key=True)
+    name = db.mapped_column(db.String)
+    phone = db.mapped_column(db.String)
 
     def __repr__(self):
         return f"<Customer {self.id}: {self.name}>"

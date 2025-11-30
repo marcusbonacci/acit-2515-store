@@ -8,7 +8,7 @@ from sqlalchemy import select
 try:
     from app import app
     from database import db
-    from models import Base, Customer, Product, Category
+    from models import Customer, Product, Category
 except ImportError as e:
     print("IMPORT ERROR", e)
 
@@ -17,11 +17,11 @@ except ImportError as e:
 # Functions
 def drop():
     print(f"Dropping tables for {db.engine}")
-    Base.metadata.drop_all(db.engine)
+    db.Base.metadata.drop_all(db.engine)
     
 def create():
     print(f"Creating tables for {db.engine}")
-    Base.metadata.create_all(db.engine)
+    db.Base.metadata.create_all(db.engine)
 
 
 def populate():

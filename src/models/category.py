@@ -1,14 +1,13 @@
 # Imports
-from sqlalchemy import Integer, String
-from sqlalchemy.orm import mapped_column, Mapped, relationship
+from sqlalchemy.orm import Mapped
 
 # Local Imports
-from . import Base
+from database import db
 
 # Model
-class Category(Base):
+class Category(db.Model):
     __tablename__ = "categories"
 
-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    name: Mapped[str] = mapped_column(String)
-    products = relationship("Product", back_populates="category")
+    id: Mapped[int] = db.mapped_column(db.Integer, primary_key=True)
+    name: Mapped[str] = db.mapped_column(db.String)
+    products = db.relationship("Product", back_populates="category")
