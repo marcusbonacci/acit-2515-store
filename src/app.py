@@ -15,7 +15,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data.db"
 app.instance_path = Path(__file__).resolve().parent / "data"
 db.init_app(app)
 
-def main():
+def create_app():
     with app.app_context():
         @app.route("/")
         def home():
@@ -42,6 +42,5 @@ def main():
 
     app.run(debug=True, port=8888)
 
-# Main
 if __name__ == "__main__":
-    main()
+    create_app()
