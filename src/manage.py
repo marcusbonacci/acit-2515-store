@@ -17,11 +17,11 @@ except ImportError as e:
 # Functions
 def drop():
     print(f"Dropping tables for {db.engine}")
-    db.Base.metadata.drop_all(db.engine)
+    db.drop_all(db.engine)
     
 def create():
     print(f"Creating tables for {db.engine}")
-    db.Base.metadata.create_all(db.engine)
+    db.create_all(db.engine)
 
 
 def populate():
