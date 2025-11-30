@@ -6,6 +6,9 @@ from flask import Flask, render_template
 # Local Imports
 from database import db
 from models import Product, Customer, Category
+from routes import customers_bp, products_bp, categories_bp
+
+# Blueprints
 
 # Variables
 
@@ -17,28 +20,15 @@ db.init_app(app)
 
 def create_app():
     with app.app_context():
+
         @app.route("/")
         def home():
             return render_template("home.html")
         
-        @app.route("/products")
-        def products():
-            statement = select(Product)
-            products = db.session.execute(statement).scalars()
-            return render_template("products.html", products=products)
-
-        @app.route("/customers")
-        def customers():
-            statement = select(Customer)
-            customers = db.session.execute(statement).scalars()
-            return render_template("customers.html", customers=customers)
-
-        @app.route("/categories")
-        def categories():
-            statement = select(Category)
-            category = db.session.execute(statement).scalars()
-            return render_template("categories.html", categories=category)
-
+        # Register Blueprints
+        app.register_blueprint(customers_bp, url_prefix="/customers")
+        app.register_blueprint(products_bp, url_prefix="/products")
+        app.register_blueprint(categories_bp, url_prefix="/categories")
 
     app.run(debug=True, port=8888)
 

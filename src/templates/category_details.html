@@ -2,23 +2,21 @@
 {% block pagetitle %}categories {% endblock %}
 
 {% block content %}
-<h2>Categories</h2>
+
+<h2>{{ category.title() }} Details</h2>
+<a href="{{ url_for('categories.view_categories') }}">Back</a>
 <table>
     <!-- Headers -->
     <tr>
         <th>Name</th>
     </tr>
     <!-- Data -->
-    {% for category in categories %}
+    {% for product in products %}
     <tr>
         <td>
-            <a href="{{ url_for('categories.details', name=category.name) }}">
-                {{ category.name.title() }}
-            </a>
+            {{ product.name.title() }}
         </td>
     </tr>
     {% endfor %}
 </table>
-
-
 {% endblock %}

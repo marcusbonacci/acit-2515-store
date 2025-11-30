@@ -12,9 +12,9 @@
             <a href="{{ url_for('home') }}">Grocery Store</a>
         </h1>
         <nav>
-            <a href="{{ url_for('products') }}" class="nav-link">Products</a>
-            <a href="{{ url_for('customers')}}" class="nav-link">Customers</a>
-            <a href="{{ url_for('categories')}}" class="nav-link">Categories</a>
+            <a href="{{ url_for('products.view_products') }}" class="nav-link">Products</a>
+            <a href="{{ url_for('customers.view_customers') }}" class="nav-link">Customers</a>
+            <a href="{{ url_for('categories.view_categories') }}" class="nav-link">Categories</a>
         </nav>
     </header>
     <main>
