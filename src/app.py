@@ -14,7 +14,10 @@ from routes import customers_bp, products_bp, categories_bp
 
 # Functions
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data.db"
+app.config.from_mapping(
+    SECRET_KEY="dev",
+    SQLALCHEMY_DATABASE_URI="sqlite:///data.db"
+)
 app.instance_path = Path(__file__).resolve().parent / "data"
 db.init_app(app)
 
