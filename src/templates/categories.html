@@ -1,8 +1,12 @@
 {% extends "base.html" %}
-{% block pagetitle %}categories {% endblock %}
+{% block pagetitle %} Categories {% endblock %}
 
 {% block content %}
 <h2>Categories</h2>
+<span>
+    <a href="{{ url_for('home') }}">Home</a> /
+    <a href="{{ url_for('categories.view_categories') }}">Categories</a>
+</span>
 <table>
     <!-- Headers -->
     <tr>

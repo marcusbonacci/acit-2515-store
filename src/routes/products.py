@@ -18,3 +18,10 @@ def view_products():
     statement = select(Product)
     result = db.session.execute(statement).scalars()
     return render_template("products.html", products=result)
+
+@products_bp.route("/<int:id>")
+def details(id):
+    statement = select(Product).where(Product.id == id )
+    result = db.session.execute(statement).scalar()
+    return render_template("product_details.html", product=result)
+

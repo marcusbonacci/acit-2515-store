@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block pagetitle %} Product {{ product.name.title() }} {% endblock %}
+
+{% block content %}
+
+<h2>Details for {{ product.name.title() }}</h2>
+<span>
+    <a href="{{ url_for('home') }}">Home</a> /
+    <a href="{{ url_for('categories.view_categories') }}">Categories</a> /
+    <a href="{{ url_for('categories.details', name=product.category.name) }}">{{ product.category.name.title() }}</a> /
+    <a href="{{ url_for('products.details', id=product.id) }}">{{ product.name.title() }}</a>
+</span>
+<table>
+    <!-- Headers -->
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Inventory</th>
+    </tr>
+    <!-- Data -->
+    <tr>
+        <td>{{ product.id }}</td>
+        <td>{{ product.name.title() }}</td>
+        <td>${{ product.price }}</td>
+        <td>{{ product.inventory }}</td>
+    </tr>
+</table>
+{% endblock %}

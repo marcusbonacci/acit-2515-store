@@ -21,7 +21,6 @@ def view_categories():
 
 @categories_bp.route("/<string:name>")
 def details(name):
-    print("AAAAAAAAAAAAAAAAAAAAAAAAA", name)
     statement = select(Category).where(Category.name == name)
     result = db.session.execute(statement).scalar()
     return render_template("category_details.html", category=result.name, products=result.products)

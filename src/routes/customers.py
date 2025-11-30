@@ -20,3 +20,10 @@ def view_customers():
     statement = select(Customer)
     result = db.session.execute(statement).scalars()
     return render_template("customers.html", customers=result)
+
+@customers_bp.route("/<int:id>")
+def details(id):
+    statement = select(Customer).where(Customer.id == id)
+    result = db.session.execute(statement).scalar()
+    return render_template("customer_details.html", customer=result)
+

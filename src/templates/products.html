@@ -3,7 +3,9 @@
 
 {% block content %}
 <h2>Products</h2>
-
+<span>
+    <a href="{{ url_for('products.view_products') }}">Products</a>
+</span>
 <table>
     <!-- Headers -->
     <tr>
@@ -25,11 +27,18 @@
     {% endif %}
 
     <tr>
-        <td>{{ product.name.title() }}</td>
+        <td>
+            <a href="{{ url_for('products.details', id=product.id) }}">
+                {{ product.name.title() }}
+            </a>
+        </td>
         <td>${{ product.price }}</td>
         <td stock="{{ cur_stock }}">{{ product.inventory, cur_stock.title() }}</td>
-        <td>{{ product.category.name.title() }}</td>
-        <!-- <td>{{ cur_stock.title() }}</td> -->
+        <td>
+            <a href="{{ url_for('categories.details', name=product.category.name) }}">
+                {{ product.category.name.title() }}
+            </a>
+        </td>
     </tr>
     {% endfor %}
 </table>
