@@ -7,7 +7,7 @@ from models import Customer
 from database import db
 
 # Variables
-customers_bp = Blueprint(
+customer_bp = Blueprint(
     "customers",
     __name__,
     static_folder="static",
@@ -15,15 +15,15 @@ customers_bp = Blueprint(
 )
 
 # Customer Route
-@customers_bp.route("/")
+@customer_bp.route("/")
 def view_customers():
     statement = select(Customer)
     result = db.session.execute(statement).scalars()
-    return render_template("customers.html", customers=result)
+    return render_template("customers/index.html", customers=result)
 
-@customers_bp.route("/<int:id>")
+@customer_bp.route("/<int:id>")
 def details(id):
     statement = select(Customer).where(Customer.id == id)
     result = db.session.execute(statement).scalar()
-    return render_template("customer_details.html", customer=result)
+    return render_template("customers/details.html", customer=result)
 

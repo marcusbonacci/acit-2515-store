@@ -5,12 +5,7 @@ from flask import Flask, render_template
 
 # Local Imports
 from database import db
-from models import Product, Customer, Category
-from routes import customers_bp, products_bp, categories_bp
-
-# Blueprints
-
-# Variables
+from blueprints import category_bp, customer_bp, product_bp
 
 # Functions
 app = Flask(__name__)
@@ -26,12 +21,12 @@ def create_app():
 
         @app.route("/")
         def home():
-            return render_template("home.html")
+            return render_template("index.html")
         
         # Register Blueprints
-        app.register_blueprint(customers_bp, url_prefix="/customers")
-        app.register_blueprint(products_bp, url_prefix="/products")
-        app.register_blueprint(categories_bp, url_prefix="/categories")
+        app.register_blueprint(customer_bp, url_prefix="/customers")
+        app.register_blueprint(product_bp, url_prefix="/products")
+        app.register_blueprint(category_bp, url_prefix="/categories")
 
     app.run(debug=True, port=8888)
 

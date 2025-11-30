@@ -6,22 +6,21 @@ from sqlalchemy import select
 from models import Product
 from database import db
 
-products_bp = Blueprint(
+product_bp = Blueprint(
     "products",
     __name__,
     static_folder="static",
     template_folder="templates"    
 )
 
-@products_bp.route("/")
+@product_bp.route("/")
 def view_products():
     statement = select(Product)
     result = db.session.execute(statement).scalars()
-    return render_template("products.html", products=result)
+    return render_template("products/index.html", products=result)
 
-@products_bp.route("/<int:id>")
+@product_bp.route("/<int:id>")
 def details(id):
     statement = select(Product).where(Product.id == id )
     result = db.session.execute(statement).scalar()
-    return render_template("product_details.html", product=result)
-
+    return render_template("products/details.html", product=result)
