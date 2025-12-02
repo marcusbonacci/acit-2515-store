@@ -1,13 +1,10 @@
 # Imports
 from pathlib import Path
-from sqlalchemy import select
 from flask import Flask, render_template
 
 # Local Imports
 from util import db
 from blueprints import category_bp, customer_bp, product_bp, order_bp
-
-from models import Order
 
 # Functions
 app = Flask(__name__)
