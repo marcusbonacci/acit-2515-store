@@ -84,6 +84,11 @@ span *:nth-child(1) {
   padding-inline-end: .5rem;
 }
 
+abbr {
+  color: var(--critical);
+  font-weight: 500;
+}
+
 button {
   background-color: var(--color-primary);
   color: var(--color-text);
@@ -151,9 +156,9 @@ nav {
   padding-bottom: .25rem;
 }
 
-/* Main */
-main {
-
+/* Other */
+.critical {
+  color: var(--critical);
 }
 
 /* Stock */

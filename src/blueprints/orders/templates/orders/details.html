@@ -55,9 +55,14 @@
 
 <!-- Actions -->
 {% if not order.completed %}
-    <form method="post" action="{{ url_for('orders.complete', id=order.id) }}">
-        <button type="submit">Complete Order</button>
-    </form>
+    {% if order.can_complete() %}
+        <form method="post" action="{{ url_for('orders.complete', id=order.id) }}">
+            <button type="submit">Complete Order</button>
+        </form>
+    {% else %}
+        <p class="critical">* Not enough stock to complete order</p>
+        <button class="faded">Completed</button>
+    {% endif%}
 {% else %}
     <button class="faded">Completed</button>
 {% endif %}

@@ -34,7 +34,11 @@
                 {% if order.completed %}
                 <p>Completed</p>
                 {% else %}
-                <p>Pending</p>
+                    {% if order.can_complete() %}
+                        <p>Pending</p>
+                    {% else %}
+                        <abbr title="One or more items are out of stock">Pending</abbr>
+                    {% endif%}
                 {% endif %}
             </td>
         </tr>

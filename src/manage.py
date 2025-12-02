@@ -91,12 +91,6 @@ def create_random_order():
     db.session.add(order)
     db.session.commit()
 
-    test = db.session.execute(select(Order)).scalars()
-    for order in test:
-        print(order.items)
-
-
-
 # Main
 if __name__ == "__main__":
     if len(argv) > 1:

@@ -35,6 +35,10 @@ class Order(db.Model):
         db.session.commit()
         return True
 
+    def can_complete(self) -> bool:
+        for item in self.items:
+            if (item.quantity > item.product.inventory): return False
+        return True
 
     def __repr__(self):
         return f"<Order {self.id}>"
