@@ -1,3 +1,4 @@
+# Local Imports
 from database import db
 
 class Customer(db.Model):

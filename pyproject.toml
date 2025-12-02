@@ -1,7 +1,7 @@
 [project]
 name = "store"
 version = "0.1.0"
-description = "Add your description here"
+description = "Marcus Bonacci's ACIT 2515 Term Project"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
@@ -19,7 +19,7 @@ dependencies = [
 
 [tool.pytest.ini_options]
 minversion = "8.1"
-testpaths = ["tests"]
+testpaths = ["src/tests"]
 pythonpath = ["."]
 
 [dependency-groups]
