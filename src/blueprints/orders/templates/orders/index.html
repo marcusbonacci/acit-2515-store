@@ -37,7 +37,7 @@
                     {% if order.can_complete() %}
                         <p>Pending</p>
                     {% else %}
-                        <abbr title="One or more items are out of stock">Pending</abbr>
+                        <abbr title="Not enough stock to complete this order">Paused</abbr>
                     {% endif%}
                 {% endif %}
             </td>
