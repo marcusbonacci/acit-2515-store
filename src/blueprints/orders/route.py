@@ -25,6 +25,7 @@ def view_orders():
 def details(id):
     statement = select(Order).where(Order.id == id)
     result = db.session.execute(statement).scalar()
+    if not result: return render_template("error.html", message="Resource not found", status_code=404), 404
     return render_template("orders/details.html", order=result)
 
 @order_bp.route("/<int:id>/complete", methods=["POST"])

@@ -9,6 +9,7 @@
 <table>
     <!-- Headers -->
     <tr>
+        <th>Id</th>
         <th>Name</th>
         <th>Price</th>
         <th>Inventory</th>
@@ -27,6 +28,7 @@
     {% endif %}
 
     <tr>
+        <td>{{ product.id }}</td>
         <td>
             <a href="{{ url_for('products.details', id=product.id) }}">
                 {{ product.name.title() }}

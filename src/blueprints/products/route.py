@@ -23,4 +23,5 @@ def view_products():
 def details(id):
     statement = select(Product).where(Product.id == id )
     result = db.session.execute(statement).scalar()
+    if not result: return render_template("error.html", message="Resource not found", status_code=404), 404
     return render_template("products/details.html", product=result)

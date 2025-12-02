@@ -23,4 +23,5 @@ def view_categories():
 def details(name):
     statement = select(Category).where(Category.name == name)
     result = db.session.execute(statement).scalar()
+    if not result: return render_template("error.html", message="Resource not found", status_code=404), 404
     return render_template("categories/details.html", category=result.name, products=result.products)
