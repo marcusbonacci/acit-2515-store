@@ -31,10 +31,6 @@ def create_app():
         app.register_blueprint(category_bp, url_prefix="/categories")
         app.register_blueprint(order_bp, url_prefix="/orders")
 
-        # my_order = db.session.execute(select(Order)).scalar()
-        # # print(my_order.items)
-        # my_order.complete()
-
     app.run(debug=True, port=8888)
 
 if __name__ == "__main__":
