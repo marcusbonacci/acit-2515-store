@@ -4,7 +4,7 @@ from sqlalchemy import select
 from flask import Flask, render_template
 
 # Local Imports
-from database import db
+from util import db
 from blueprints import category_bp, customer_bp, product_bp, order_bp
 
 from models import Order

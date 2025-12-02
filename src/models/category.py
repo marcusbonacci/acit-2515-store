@@ -2,7 +2,7 @@
 from sqlalchemy.orm import Mapped
 
 # Local Imports
-from database import db
+from util import db
 
 # Model
 class Category(db.Model):

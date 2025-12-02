@@ -4,7 +4,7 @@ from sqlalchemy import select
 
 # Local Imports
 from models import Customer
-from database import db
+from util import db
 
 # Variables
 customer_bp = Blueprint(

@@ -4,7 +4,7 @@ from sqlalchemy import select
 
 # Local Imports
 from models import Order
-from database import db
+from util import db
 
 # Variables
 order_bp = Blueprint(

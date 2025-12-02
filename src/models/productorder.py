@@ -2,7 +2,7 @@
 from sqlalchemy.orm import Mapped, relationship
 
 # Local Imports
-from database import db
+from util import db
 class ProductOrder(db.Model):
     __tablename__ = "productorder"
 

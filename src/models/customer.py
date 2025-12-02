@@ -1,5 +1,5 @@
 # Local Imports
-from database import db
+from util import db
 
 class Customer(db.Model):
     __tablename__ = "customer"

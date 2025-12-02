@@ -3,7 +3,7 @@ from sqlalchemy.orm import Mapped
 from datetime import datetime
 
 # Local Imports
-from database import db
+from util import db
 
 class Order(db.Model):
     __tablename__ = "order"

@@ -2,7 +2,7 @@
 from sqlalchemy.orm import Mapped
 
 # Local Import
-from database import db
+from util import db
 
 # Model
 class Product(db.Model):

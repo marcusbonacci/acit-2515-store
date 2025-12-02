@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 # Local Imports
 try:
     from app import app
-    from database import db
+    from util import db
     from models import Customer, Product, Category, Order, ProductOrder
 except ImportError as e:
     print("IMPORT ERROR", e)
@@ -33,7 +33,7 @@ def populate():
     print(f"Populating all tables")
 
     # Products
-    with open("products.csv") as file:
+    with open("src/data/products.csv") as file:
         data = csv.reader(file)
         next(data)
         for row in data:
@@ -52,7 +52,7 @@ def populate():
             db.session.add(item)
         db.session.commit()
 
-    with open("customers.csv") as file:
+    with open("src/data/customers.csv") as file:
         data = csv.reader(file)
         next(data)
         for row in data:
@@ -63,6 +63,9 @@ def populate():
             )
             db.session.add(item)
         db.session.commit()
+
+    for i in range(random.randint(15, 45)):
+        create_random_order()
 
 def create_random_order():
     # Construction
