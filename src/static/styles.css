@@ -156,6 +156,14 @@ nav {
   padding-bottom: .25rem;
 }
 
+.price {
+  display: flex;
+  border-top: 1px var(--color-light-gray) solid;
+  margin-block: .5rem;
+  padding-top: .5rem;
+  gap: .5rem;
+}
+
 /* Other */
 .critical {
   color: var(--critical);
