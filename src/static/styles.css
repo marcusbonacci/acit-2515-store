@@ -169,6 +169,10 @@ nav {
   color: var(--critical);
 }
 
+.good {
+  color: rgb(25, 157, 25);
+}
+
 /* Stock */
 [stock="critical"] {
   background-color: var(--critical) !important;
