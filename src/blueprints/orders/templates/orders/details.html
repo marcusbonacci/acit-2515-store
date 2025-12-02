@@ -19,11 +19,27 @@
     <!-- Data -->
      {% for item in order.items %}
     <tr>
-        <td>{{ item.product.name }}</td>
+        <td>
+            <a href="{{ url_for('products.details', id=item.product.id) }}">
+                {{ item.product.name.title() }}
+            </a>
+        </td>
         <td>{{ item.quantity }}</td>
         <td>${{ item.product.price * item.quantity }}</td>
     </tr>
     {% endfor %}
 </table>
-<p><b>Total: </b> {{ order.estimate() }}</p>
+
+<p><b>Ordered by: </b> <a href="{{ url_for('customers.details', id=order.customer.id) }}">
+    {{ order.customer.name.title() }}
+</a></p>
+<p><b>Total: </b> ${{ order.estimate() }}</p>
+{% if not order.completed %}
+    <form method="post" action="{{ url_for('orders.complete', id=order.id) }}">
+        <button type="submit">Complete Order</button>
+    </form>
+{% else %}
+    <button class="faded">Completed</button>
+{% endif %}
+
 {% endblock %}

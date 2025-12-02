@@ -3,6 +3,12 @@
 :root {
   font-family: "roboto", "sans-serif";
 
+  --color-primary: rgb(63, 140, 63);
+  --color-gray: rgb(122, 122, 122);
+  --color-light-gray: rgb(222, 222, 222);
+
+  --color-text: rgb(255, 255, 255);
+
   --critical: rgb(255, 78, 78);
   --danger: rgb(255, 186, 57);
   --low: rgb(255, 255, 84);
@@ -46,66 +52,108 @@ h1, h2, h3, h4, h5, h6 {
   isolation: isolate;
 }
 
+a {
+  color: black;
+  text-decoration: none;
+  transition: 75ms;
+  font-weight: 500;
+}
+
+a:hover {
+  color: var(--color-primary);
+}
+
 /* START */
 
-a {
-  text-decoration: none;
+body {
+  padding-inline: 3rem;
+  padding-block-start: .5rem;
 }
 
-main {
-    padding: 1rem;
+span {
+  display: flex;
+  padding-block: .5rem;
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-inline: 1rem;
-    margin-block-start: .5rem;
-    margin-block-end: 1rem;
-    border-bottom: 1px solid black;
+span * {
+  padding-inline: .5rem;
 }
 
-nav {
-    display: flex;
-    gap: 1rem;
+span *:nth-child(1) {
+  padding-inline: 0;
+  padding-inline-end: .5rem;
 }
 
-.nav-link {
-  color: black;
-  transition: 150ms;
+button {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  padding: .25rem;
+  padding-inline: .5rem;
+  border-radius: .5rem;
+  border: none;
+  width: 150px;
+  transition: 75ms;
 }
 
-.nav-link:hover {
-  color: red;
+button:hover {
+  filter: brightness(90%)
+}
+
+.faded {
+  background-color: var(--color-gray)
+}
+
+.faded:hover {
+  cursor: not-allowed;
+}
+
+.source {
+  background-color: rgb(7, 115, 231);
 }
 
 table {
-    width: auto;
-    border-collapse: collapse;
-
-}
-
-th, td {
-    padding-inline: 10px;
-    text-align: left;
+  border-collapse: collapse;
 }
 
 th {
-    /* background-color: lightgreen; */
-    height: 30px;
+  text-align: left;
 }
 
-tr:nth-child(odd) {
-    /* background-color: rgb(183, 183, 183); */
+td, th {
+  border-bottom: 1px var(--color-gray) solid;
+  padding: .25rem;
+  padding-inline: .5rem;
 }
 
 tr:nth-child(even) {
-    background-color: rgb(223, 222, 222);
+  background-color: var(--color-light-gray);
 }
 
-table, th, td {
-    border-bottom: 1px black solid;
+td a, p a {
+  text-decoration: underline;
+}
+
+/* Header / Navbar */
+header {
+  border-bottom: 1px var(--color-gray) solid;
+  padding-block: .25rem;
+}
+
+header div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav {
+  display: flex;
+  gap: .75rem;
+  padding-bottom: .25rem;
+}
+
+/* Main */
+main {
+
 }
 
 /* Stock */

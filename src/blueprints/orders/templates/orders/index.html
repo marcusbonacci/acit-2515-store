@@ -11,7 +11,6 @@
     <!-- Headers -->
     <tr>
         <th>Id</th>
-        <th>Items</th>
         <th>Customer</th>
         <th>Created</th>
         <th>Amount</th>
@@ -22,17 +21,8 @@
     <tr>
         <td>{{ order.id }}</td>
         <td>
-            <ol>
-                {% for product in order.items %}
-                <li>
-                    {{ product.product.name }}
-                </li>
-                {% endfor %}
-            </ol>
-        </td>
-        <td>
             <a href="{{ url_for('customers.details', id=order.customer.id) }}">
-                {{ order.customer.name }}
+                {{ order.customer.name.title() }}
             </a>
         </td>
         <td>{{ order.created }}</td>
@@ -40,17 +30,6 @@
         <td>
             <a href="{{ url_for('orders.details', id=order.id) }}">View Order</a>
         </td>
-
-        {% if not order.completed %}
-        <td>
-            <form method="post" action="{{ url_for('orders.complete', id=order.id) }}">
-                <button type="submit">Complete Order</button>
-            </form>
-        </td>
-        {% else %}
-        <td>Completed</td>
-        {% endif %}
-    
     </tr>
     {% endfor %}
 </table>

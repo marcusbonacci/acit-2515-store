@@ -8,9 +8,14 @@
 </head>
 <body>
     <header>
-        <h1>
-            <a href="{{ url_for('home') }}">Grocery Store</a>
-        </h1>
+        <div>
+            <h1 class="logo">
+                <a href="{{ url_for('home') }}">Grocery Store</a>
+            </h1>
+            <form action="https://github.com/marcusbonacci/acit-2515-store">
+                <button class="source" type="submit">Source Code</button>
+            </form>
+        </div>
         <nav>
             <a href="{{ url_for('products.view_products') }}" class="nav-link">Products</a>
             <a href="{{ url_for('customers.view_customers') }}" class="nav-link">Customers</a>
