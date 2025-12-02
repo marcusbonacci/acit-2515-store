@@ -26,7 +26,7 @@ class Order(db.Model):
     def complete(self) -> bool:
         for item in self.items:
             if (item.product.inventory >= item.quantity):
-                item.product.inventory - item.quantity
+                item.product.inventory -= item.quantity
             else:
                 raise ValueError("Not enough items to complete order")
         self.amount = self.estimate()

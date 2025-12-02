@@ -10,12 +10,14 @@
 <table>
     <!-- Headers -->
     <tr>
+        <th>Id</th>
         <th>Name</th>
         <th>Phone</th>
     </tr>
     <!-- Data -->
     {% for customer in customers %}
     <tr>
+        <td>{{ customer.id }}</td>
         <td>
             <a href="{{ url_for('customers.details', id=customer.id )}}">
                 {{ customer.name.title() }}

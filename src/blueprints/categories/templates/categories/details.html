@@ -12,11 +12,13 @@
 <table>
     <!-- Headers -->
     <tr>
+        <th>Id</th>
         <th>Name</th>
     </tr>
     <!-- Data -->
     {% for product in products %}
     <tr>
+        <td>{{ product.id }}</td>
         <td>
             <a href="{{ url_for('products.details', id=product.id) }}">
                 {{ product.name.title() }}

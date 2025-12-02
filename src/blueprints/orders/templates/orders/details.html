@@ -12,6 +12,7 @@
 <table>
     <!-- Headers -->
     <tr>
+        <th>Id</th>
         <th>Items</th>
         <th>Quantity</th>
         <th>Est. Total</th>
@@ -19,6 +20,7 @@
     <!-- Data -->
      {% for item in order.items %}
     <tr>
+        <td>{{ item.order_id }}</td>
         <td>
             <a href="{{ url_for('products.details', id=item.product.id) }}">
                 {{ item.product.name.title() }}
@@ -30,10 +32,28 @@
     {% endfor %}
 </table>
 
-<p><b>Ordered by: </b> <a href="{{ url_for('customers.details', id=order.customer.id) }}">
-    {{ order.customer.name.title() }}
-</a></p>
+<!-- Customer Name -->
+<p>
+    <b>Ordered by: </b>
+    <a href="{{ url_for('customers.details', id=order.customer.id) }}">
+        {{ order.customer.name.title() }}
+    </a>
+</p>
+
+<!-- Created -->
+<p>
+    <b>Created: </b> {{ order.created }}
+</p>
+
+<!-- Completed -->
+<p>
+    <b>Completed: </b> {{ order.completed }}
+</p>
+
+<!-- Total -->
 <p><b>Total: </b> ${{ order.estimate() }}</p>
+
+<!-- Actions -->
 {% if not order.completed %}
     <form method="post" action="{{ url_for('orders.complete', id=order.id) }}">
         <button type="submit">Complete Order</button>
