@@ -6,7 +6,7 @@ from database import db
 
 # Model
 class Category(db.Model):
-    __tablename__ = "categories"
+    __tablename__ = "category"
 
     id: Mapped[int] = db.mapped_column(db.Integer, primary_key=True)
     name: Mapped[str] = db.mapped_column(db.String)

@@ -15,6 +15,7 @@
         <th>Id</th>
         <th>Name</th>
         <th>Phone</th>
+        <th>Orders</th>
     </tr>
     <!-- Data -->
     <tr>
@@ -26,6 +27,13 @@
         </td>
         <td>
             {{ customer.phone }}
+        </td>
+        <td>
+            <ul>
+                {% for order in customer.orders %}
+                <a href="{{ url_for('orders.details', id=order.id) }}">{{ order.id }}</a>
+                {% endfor %}
+            </ul>
         </td>
     </tr>
 </table>

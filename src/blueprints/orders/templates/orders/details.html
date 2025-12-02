@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block pagetitle %} Order: {{ order.id }} {% endblock %}
+
+{% block content %}
+
+<h2>Details for Order: {{ order.id }}</h2>
+<span>
+    <a href="{{ url_for('home') }}">Home</a> /
+    <a href="{{ url_for('orders.view_orders') }}">Orders</a> /
+    <a href="{{ url_for('orders.details', id=order.id)}}">{{ order.id }}</a>
+</span>
+<table>
+    <!-- Headers -->
+    <tr>
+        <th>Items</th>
+        <th>Quantity</th>
+        <th>Est. Total</th>
+    </tr>
+    <!-- Data -->
+     {% for item in order.items %}
+    <tr>
+        <td>{{ item.product.name }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>${{ item.product.price * item.quantity }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<p><b>Total: </b> {{ order.estimate() }}</p>
+{% endblock %}

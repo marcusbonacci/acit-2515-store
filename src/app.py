@@ -5,7 +5,9 @@ from flask import Flask, render_template
 
 # Local Imports
 from database import db
-from blueprints import category_bp, customer_bp, product_bp
+from blueprints import category_bp, customer_bp, product_bp, order_bp
+
+from models import Order
 
 # Functions
 app = Flask(__name__)
@@ -27,6 +29,11 @@ def create_app():
         app.register_blueprint(customer_bp, url_prefix="/customers")
         app.register_blueprint(product_bp, url_prefix="/products")
         app.register_blueprint(category_bp, url_prefix="/categories")
+        app.register_blueprint(order_bp, url_prefix="/orders")
+
+        # my_order = db.session.execute(select(Order)).scalar()
+        # # print(my_order.items)
+        # my_order.complete()
 
     app.run(debug=True, port=8888)
 

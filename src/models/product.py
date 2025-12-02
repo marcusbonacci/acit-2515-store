@@ -12,7 +12,7 @@ class Product(db.Model):
     name: Mapped[str] = db.mapped_column(db.String)
     price: Mapped[float] = db.mapped_column(db.DECIMAL(10, 2))
     inventory: Mapped[int] = db.mapped_column(db.Integer, default=0)
-    category_id: Mapped[int] = db.mapped_column(db.Integer, db.ForeignKey("categories.id"))
+    category_id: Mapped[int] = db.mapped_column(db.Integer, db.ForeignKey("category.id"))
     category = db.relationship("Category", back_populates="products")
 
     def __repr__(self):

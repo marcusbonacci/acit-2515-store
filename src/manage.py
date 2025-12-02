@@ -2,13 +2,15 @@
 import csv
 import warnings
 from sys import argv
-from sqlalchemy import select
+from sqlalchemy import select, func
+import random
+from datetime import datetime, timedelta
 
 # Local Imports
 try:
     from app import app
     from database import db
-    from models import Customer, Product, Category
+    from models import Customer, Product, Category, Order, ProductOrder
 except ImportError as e:
     print("IMPORT ERROR", e)
 
@@ -16,20 +18,19 @@ except ImportError as e:
 
 # Functions
 def drop():
-    print(f"Dropping tables for {db.engine}")
-    db.drop_all(db.engine)
+    print(f"Dropping all tables")
+    db.drop_all()
     
 def create():
-    print(f"Creating tables for {db.engine}")
-    db.create_all(db.engine)
-
+    print(f"Creating all tables")
+    db.create_all()
 
 def populate():
 
     drop()
     create()
 
-    print(f"Populating tables for {db.engine}")
+    print(f"Populating all tables")
 
     # Products
     with open("products.csv") as file:
@@ -49,7 +50,7 @@ def populate():
                 category = ref_category
             )
             db.session.add(item)
-            db.session.commit()
+        db.session.commit()
 
     with open("customers.csv") as file:
         data = csv.reader(file)
@@ -61,7 +62,40 @@ def populate():
                 phone = phone
             )
             db.session.add(item)
-            db.session.commit()
+        db.session.commit()
+
+def create_random_order():
+    # Construction
+    customer = db.session.execute(select(Customer).order_by(func.random())).scalar()
+    num_prods = random.randint(3, 6)
+    products = db.session.execute(select(Product).order_by(func.random()).limit(num_prods)).scalars()
+
+    rand_date = datetime.now() - timedelta(
+        days=random.randint(1, 3),
+        hours=random.randint(0, 15),
+        minutes=random.randint(0, 30)
+    )
+
+    # Creation
+    order = Order(customer=customer, created=rand_date)
+    for product in products:
+        newProduct = ProductOrder(
+            product_id = product.id,
+            order_id = order.id,
+            quantity = random.randint(1, 7),
+            product = product,
+            order = order
+        )
+        db.session.add(newProduct)
+
+    db.session.add(order)
+    db.session.commit()
+
+    test = db.session.execute(select(Order)).scalars()
+    for order in test:
+        print(order.items)
+
+
 
 # Main
 if __name__ == "__main__":
