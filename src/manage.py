@@ -64,7 +64,7 @@ def populate():
             db.session.add(item)
         db.session.commit()
 
-    for i in range(random.randint(15, 45)):
+    for i in range(random.randint(30, 100)):
         create_random_order()
 
 def create_random_order():
